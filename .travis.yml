@@ -5,3 +5,10 @@ before_install:
   - docker build -t reactql_kit .
 script:
   - docker run reactql_kit npm run lint
+
+after_success:
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then
+    docker tag dougajmcdonald/corewar dougajmcdonald/corewar:$(git rev-parse --short HEAD);
+    docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+    docker push dougajmcdonald/corewar;
+    fi
