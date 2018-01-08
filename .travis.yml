@@ -8,7 +8,7 @@ script:
 
 after_success:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
-    docker tag corewar dougajmcdonald/corewar:$(git rev-parse --short HEAD);
+    docker tag corewar dougajmcdonald/corewar:latest;
     docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
     docker push dougajmcdonald/corewar;
     fi
