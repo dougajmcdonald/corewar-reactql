@@ -59,7 +59,7 @@ export default class GraphQLMessage extends React.PureComponent {
     const isLoading = data.loading ? 'yes' : 'nope';
     return (
       <div>
-        <h2>Message from GraphQL server: <em>{message}</em></h2>
+        <h2>NEW Message from GraphQL server: <em>{message}</em></h2>
         <h2>Currently loading?: {isLoading}</h2>
       </div>
     );
