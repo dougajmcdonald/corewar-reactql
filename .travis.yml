@@ -3,6 +3,7 @@ services:
   - docker
 
 before_install:
+  docker build -t corewar .
 
 script:
   - npm install
@@ -11,7 +12,6 @@ script:
 
 after_success:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
-    docker build -t corewar .
     docker tag corewar $DOCKER_USERNAME/corewar:latest;
     docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
     docker push $DOCKER_USERNAME/corewar;
