@@ -1,25 +1,16 @@
 sudo: required
 services:
   - docker
-stages:
-  - build docker image
-  - test
-jobs:
-  include:
-    - stage: build docker image
-      script:
-        - docker build -t corewar .
 
-    - stage: test
-      script:
-        - docker run corewar npm run test
+before_install:
+  - docker build -t corewar .
+script:
+  - docker run corewar npm run test
 
-    script:
-      - npm run coveralls
-
-    after_success:
-      - if [ "$TRAVIS_BRANCH" == "master" ]; then
-        docker tag corewar $DOCKER_USERNAME/corewar:latest;
-        docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
-        docker push $DOCKER_USERNAME/corewar;
-        fi
+after_success:
+  - npm run coveralls
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then
+    docker tag corewar $DOCKER_USERNAME/corewar:latest;
+    docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+    docker push $DOCKER_USERNAME/corewar;
+    fi
