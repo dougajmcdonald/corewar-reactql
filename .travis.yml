@@ -1,16 +1,15 @@
 sudo: required
 services:
   - docker
-
 jobs:
   include:
     - stage: build docker image
-      script:
-      - docker build -t corewar .
+      - script:
+        - docker build -t corewar .
 
     - stage: test in container
-      script:
-      - docker run corewar npm run test
+      - script:
+        - docker run corewar npm run test
 
     script:
       - npm run coveralls
