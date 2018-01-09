@@ -5,10 +5,10 @@ services:
 before_install:
   - docker build -t corewar .
 script:
+  - npm run coveralls
   - docker run corewar npm run test
 
 after_success:
-  - npm run coveralls
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
     docker tag corewar $DOCKER_USERNAME/corewar:latest;
     docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
