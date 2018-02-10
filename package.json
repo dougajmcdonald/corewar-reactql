@@ -16,7 +16,9 @@
     "start": "run-p browser server-dev",
     "static": "serve -s dist/public",
     "test": "jest",
-    "coveralls": "cat ./coverage/lcov.info | node node_modules/.bin/coveralls"
+    "coveralls": "cat ./coverage/lcov.info | node node_modules/.bin/coveralls",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
@@ -110,10 +112,12 @@
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
     "regenerator-runtime": "^0.11.0",
-    "seamless-immutable": "^7.1.2"
+    "seamless-immutable": "^7.1.2",
+    "snyk": "^1.69.7"
   },
   "engines": {
     "node": ">=7",
     "npm": ">=4"
-  }
+  },
+  "snyk": true
 }
