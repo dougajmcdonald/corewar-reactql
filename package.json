@@ -16,7 +16,9 @@
     "start": "run-p browser server-dev",
     "static": "serve -s dist/public",
     "test": "jest",
-    "coveralls": "cat ./coverage/lcov.info | node node_modules/.bin/coveralls"
+    "coveralls": "cat ./coverage/lcov.info | node node_modules/.bin/coveralls",
+    "prepare": "npm run snyk-protect",
+    "snyk-protect": "snyk-protect"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
@@ -82,14 +84,14 @@
   },
   "dependencies": {
     "apollo-local-query": "^0.3.1",
-    "apollo-server-koa": "^1.2.0",
-    "boxen": "^1.2.2",
+    "apollo-server-koa": "^3.0.0",
+    "boxen": "^1.3.0",
     "chalk": "^2.3.0",
     "coveralls": "^3.0.0",
     "graphql": "^0.11.7",
     "history": "^4.7.2",
     "ip": "^1.1.5",
-    "isomorphic-fetch": "^2.2.1",
+    "isomorphic-fetch": "^3.0.0",
     "kcors": "^2.2.1",
     "koa": "^2.4.1",
     "koa-bodyparser": "^4.2.0",
@@ -98,10 +100,10 @@
     "koa-send": "^4.1.1",
     "koa-sslify": "^2.1.2",
     "microseconds": "^0.1.0",
-    "prop-types": "^15.6.0",
-    "react": "^16.1.1",
+    "prop-types": "^15.6.2",
+    "react": "^16.5.0",
     "react-apollo": "^1.4.16",
-    "react-dom": "^16.1.1",
+    "react-dom": "^16.5.0",
     "react-helmet": "^5.2.0",
     "react-hot-loader": "^3.1.3",
     "react-redux": "^5.0.6",
@@ -110,10 +112,12 @@
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
     "regenerator-runtime": "^0.11.0",
-    "seamless-immutable": "^7.1.2"
+    "seamless-immutable": "^7.1.2",
+    "@snyk/protect": "latest"
   },
   "engines": {
     "node": ">=7",
     "npm": ">=4"
-  }
+  },
+  "snyk": true
 }
