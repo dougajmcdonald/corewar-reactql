@@ -94,7 +94,7 @@
     "koa": "^2.4.1",
     "koa-bodyparser": "^4.2.0",
     "koa-helmet": "^3.3.0",
-    "koa-router": "^7.3.0",
+    "koa-router": "^13.0.1",
     "koa-send": "^4.1.1",
     "koa-sslify": "^2.1.2",
     "microseconds": "^0.1.0",
